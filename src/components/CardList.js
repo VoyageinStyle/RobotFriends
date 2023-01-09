@@ -2,8 +2,10 @@ import React from "react";
 import Card from "./Card.js";
 
 const CardList = ({ robots }) => {
-  return (
-    <div>
+  return !robots.length ? (
+    <h1 className="pv6">No robots with that name</h1>
+    ) : (
+    <div className="mv3">
       {robots.map((user, i) => {
         return (
           <Card
