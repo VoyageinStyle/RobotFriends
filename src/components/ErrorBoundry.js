@@ -20,3 +20,5 @@ class ErrorBoundry extends React.Component {
   }
 }
 export default ErrorBoundry;
+
+//No official hook to replace componentDidCatch() as of yet
