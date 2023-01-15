@@ -14,6 +14,7 @@ import {
   searchRobots,
   requestRobots,
   setCount,
+  selectCard,
 } from "./reducers.js";
 
 const logger = createLogger();
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   searchRobots,
   requestRobots,
   setCount,
+  selectCard,
 });
 const store = createStore(
   rootReducer,

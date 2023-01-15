@@ -5,6 +5,8 @@ import {
   REQUEST_ROBOTS_SUCCESS,
   RESET_COUNT,
   SET_COUNT,
+  CLICK_CARD,
+  UNCLICK_CARD,
 } from "./constants";
 
 const intialStateSearch = {
@@ -45,9 +47,22 @@ export const setCount = (state = initialClickCount, action = {}) => {
     case SET_COUNT:
       return { ...state, count: state.count + 1 };
     case RESET_COUNT:
-      return { ...state, count: state = 0 };
+      return { ...state, count: (state = 0) };
     default:
       return state;
   }
 };
 
+const initalSelection = {
+  selectedCard: false,
+};
+export const selectCard = (state = initalSelection, action = {}) => {
+  switch (action.type) {
+    case CLICK_CARD:
+      return { ...state, selectCard: true };
+    case UNCLICK_CARD:
+      return { ...state, selectCard: false };
+    default:
+      return state;
+  }
+};

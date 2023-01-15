@@ -5,6 +5,8 @@ import {
   REQUEST_ROBOTS_SUCCESS,
   SET_COUNT,
   RESET_COUNT,
+  CLICK_CARD,
+  UNCLICK_CARD,
 } from "./constants";
 
 export const setSearchField = (text) => ({
@@ -28,3 +30,8 @@ export const setCount = (data) => {
   }
   return { type: RESET_COUNT };
 };
+
+export const selectCard = (card) => ({
+  type: CLICK_CARD,
+  payload: card,
+})
