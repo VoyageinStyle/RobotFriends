@@ -11,19 +11,19 @@ import "tachyons";
 import reportWebVitals from "./reportWebVitals";
 
 import {
-  searchRobots,
-  requestRobots,
-  setCount,
-  selectCard,
+  searchRobotsReducer,
+  requestRobotsReducer,
+  setCountReducer,
+  selectCardReducer,
 } from "./reducers.js";
 
 const logger = createLogger();
 
 const rootReducer = combineReducers({
-  searchRobots,
-  requestRobots,
-  setCount,
-  selectCard,
+  searchRobotsReducer,
+  requestRobotsReducer,
+  setCountReducer,
+  selectCardReducer,
 });
 const store = createStore(
   rootReducer,

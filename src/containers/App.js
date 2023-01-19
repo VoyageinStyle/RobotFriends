@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import CardList from "../components/CardList";
+import CardList from "./CardList";
 import Searchbox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundry from "../components/ErrorBoundry";
@@ -17,12 +17,12 @@ import {
 
 const mapStateToProps = (state) => {
   return {
-    searchField: state.searchRobots.searchField,
-    robots: state.requestRobots.robots,
-    isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error,
-    count: state.setCount.count,
-    selectedCard: state.selectCard.selectedCard
+    searchField: state.searchRobotsReducer.searchField,
+    robots: state.requestRobotsReducer.robots,
+    isPending: state.requestRobotsReducer.isPending,
+    error: state.requestRobotsReducer.error,
+    count: state.setCountReducer.count,
+    selectedCard: state.selectCardReducer.selectedCard,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -31,33 +31,23 @@ const mapDispatchToProps = (dispatch) => {
     onRequestRobots: () => requestRobots(dispatch),
     onClickCount: () => dispatch(setCount()),
     reset: () => dispatch(setCount(0)),
-    onSelect: () => dispatch(selectCard())
+    onSelect: () => dispatch(selectCard()),
   };
 };
 
-function App(props) {
+function App({ onRequestRobots, ...props }) {
   useEffect(() => {
-    props.onRequestRobots();
-  }, []);
-
-
-
-  // const filteredRobots = props.robots.filter((robot) => {
-  //   if (!props.selectedCard) {
-  //     return robot.name.toLowerCase().includes(props.searchField.toLowerCase());
-  //   } else {
-  //     return robot.name.toLowerCase().includes("lea");
-  //   }
-  // });  
+    onRequestRobots();
+  }, [onRequestRobots]);
 
   const filteredRobots = props.robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(props.searchField.toLowerCase());
+  return robot.name.toLowerCase().includes(props.searchField.toLowerCase());
   });
 
   return props.isPending ? (
     <h1> Loading </h1>
   ) : (
-    <div className="tc">
+    <div className="tc mw-100">
       <h1 className="f1 ">RobotFriends</h1>
       <button className="mh2" onClick={props.onClickCount}>
         Click me
@@ -70,7 +60,7 @@ function App(props) {
       <Scroll>
         <ErrorBoundry>
           <SelectedCard>
-            <CardList robots={filteredRobots} /* selected={selectedCardChildren}*/ />
+            <CardList robots={filteredRobots} />
           </SelectedCard>
         </ErrorBoundry>
       </Scroll>

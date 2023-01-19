@@ -5,14 +5,14 @@ import {
   REQUEST_ROBOTS_SUCCESS,
   RESET_COUNT,
   SET_COUNT,
-  CLICK_CARD,
-  UNCLICK_CARD,
+  SELECT_CARD,
+  UNSELECT_CARD,
 } from "./constants";
 
 const intialStateSearch = {
   searchField: "",
 };
-export const searchRobots = (state = intialStateSearch, action = {}) => {
+export const searchRobotsReducer = (state = intialStateSearch, action = {}) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return { ...state, searchField: action.payload };
@@ -26,7 +26,7 @@ const intialStateRobots = {
   robots: [],
   error: "",
 };
-export const requestRobots = (state = intialStateRobots, action = {}) => {
+export const requestRobotsReducer = (state = intialStateRobots, action = {}) => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return { ...state, isPending: true };
@@ -42,7 +42,7 @@ export const requestRobots = (state = intialStateRobots, action = {}) => {
 const initialClickCount = {
   count: 0,
 };
-export const setCount = (state = initialClickCount, action = {}) => {
+export const setCountReducer = (state = initialClickCount, action = {}) => {
   switch (action.type) {
     case SET_COUNT:
       return { ...state, count: state.count + 1 };
@@ -56,11 +56,11 @@ export const setCount = (state = initialClickCount, action = {}) => {
 const initalSelection = {
   selectedCard: false,
 };
-export const selectCard = (state = initalSelection, action = {}) => {
+export const selectCardReducer = (state = initalSelection, action = {}) => {
   switch (action.type) {
-    case CLICK_CARD:
+    case SELECT_CARD:
       return { ...state, selectCard: true };
-    case UNCLICK_CARD:
+    case UNSELECT_CARD:
       return { ...state, selectCard: false };
     default:
       return state;

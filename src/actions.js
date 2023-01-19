@@ -5,8 +5,8 @@ import {
   REQUEST_ROBOTS_SUCCESS,
   SET_COUNT,
   RESET_COUNT,
-  CLICK_CARD,
-  UNCLICK_CARD,
+  SELECT_CARD,
+  UNSELECT_CARD,
 } from "./constants";
 
 export const setSearchField = (text) => ({
@@ -24,14 +24,13 @@ export const requestRobots = (dispatch) => {
     );
 };
 
-export const setCount = (data) => {
-  if (data !== 0) {
-    return { type: SET_COUNT };
-  }
-  return { type: RESET_COUNT };
-};
+export const setCount = (data) =>
+  data !== 0 ? { type: SET_COUNT } : { type: RESET_COUNT };
 
-export const selectCard = (card) => ({
-  type: CLICK_CARD,
-  payload: card,
-})
+export const selectCard = (card) =>
+  card
+    ? { type: UNSELECT_CARD }
+    : {
+        type: SELECT_CARD,
+        payload: card,
+      };

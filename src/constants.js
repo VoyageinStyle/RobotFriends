@@ -7,5 +7,5 @@ export const REQUEST_ROBOTS_FAILED = "REQUEST_ROBOTS_FAILED";
 export const SET_COUNT = "SET_COUNT"
 export const RESET_COUNT = "RESET_COUNT"
 
-export const CLICK_CARD= "CLICK_CARD"
-export const UNCLICK_CARD= "UNCLICK_CARD"
+export const SELECT_CARD= "SELECT_CARD"
+export const UNSELECT_CARD= "UNSELECT_CARD"
