@@ -5,7 +5,6 @@ import CardList from "./CardList";
 import Searchbox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundry from "../components/ErrorBoundry";
-import SelectedCard from "../components/CardSelect";
 import "./App.css";
 
 import {
@@ -41,7 +40,7 @@ function App({ onRequestRobots, ...props }) {
   }, [onRequestRobots]);
 
   const filteredRobots = props.robots.filter((robot) => {
-  return robot.name.toLowerCase().includes(props.searchField.toLowerCase());
+    return robot.name.toLowerCase().includes(props.searchField.toLowerCase());
   });
 
   return props.isPending ? (
@@ -59,9 +58,7 @@ function App({ onRequestRobots, ...props }) {
       <Searchbox searchChange={props.onSearchChange} />
       <Scroll>
         <ErrorBoundry>
-          <SelectedCard>
             <CardList robots={filteredRobots} />
-          </SelectedCard>
         </ErrorBoundry>
       </Scroll>
     </div>
